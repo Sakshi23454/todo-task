@@ -11,8 +11,7 @@ const app = express()
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
         ? 'https://todo-task-client-xi.vercel.app'
-        : 'http://localhost:3000',
-    credentials: true
+        : 'http://localhost:3000'
 }));
 
 app.use(express.json())
