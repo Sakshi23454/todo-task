@@ -8,7 +8,13 @@ mongoose.connect(process.env.MONGO_URL)
 
 const app = express()
 
-app.use(cors({ origin: "http://localhost:3000" }))
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production'
+        ? 'https://todo-task-client-xi.vercel.app'
+        : 'http://localhost:3000',
+    credentials: true
+}));
+
 app.use(express.json())
 
 app.use("/api/todo", require("./routes/todo.routes.js"))
